@@ -1,0 +1,284 @@
+
+[colors]
+background = #232627
+background-alt = #00e59b
+foreground = #ffffff
+foreground-alt = #5d5d6c
+primary = #00e59b
+secondary = #f7590a
+alert = #bd2c40
+
+[bar/NU]
+width = 100%
+height = 30
+radius = 6.0
+fixed-center = true
+
+background = ${colors.background}
+foreground = ${colors.foreground}
+
+line-size = 0
+line-color = #f00
+
+border-top-size = 5
+border-left-size = 12
+border-right-size = 12
+border-bottom-size = 0
+border-color = #00000000
+
+padding-left = 0
+padding-right = 4
+
+module-margin-left = 1
+module-margin-right = 2
+
+font-0 = FontAwesome:pixelsize=10;0
+font-1 = Noto Sans CJK JP:pixelsize=10;0
+font-2 = Hack:size=11:antialias=false;0
+font-3 = siji:pixelsize=11;0
+
+modules-left = i3 
+modules-center = player-mpris-simple 
+modules-right = xbacklight pulseaudio-control xkeyboard wlan eth battery date powermenu 
+
+tray-position = right
+tray-padding = 2
+;tray-background = #0063ff
+
+cursor-click = pointer
+cursor-scroll = ns-resize
+
+[module/xkeyboard]
+type = internal/xkeyboard
+blacklist-0 = num lock
+
+format-prefix = " "
+format-prefix-foreground = ${colors.foreground}
+format-prefix-underline = ${colors.secondary}
+
+label-layout = %layout%
+label-layout-underline = ${colors.secondary}
+
+label-indicator-padding = 2
+label-indicator-margin = 1
+label-indicator-background = ${colors.secondary}
+label-indicator-underline = ${colors.secondary}
+
+[module/xbacklight]
+type = internal/xbacklight
+
+format = <label> <bar>
+label = 
+label-foreground = ${colors.foreground}
+label-padding = 2
+
+bar-width = 10
+bar-indicator = |
+bar-indicator-foreground = #fff
+bar-indicator-font = 1
+bar-fill = ─
+bar-fill-font = 1
+bar-fill-foreground = #9f78e1
+bar-empty = ─
+bar-empty-font = 1
+bar-empty-foreground = ${colors.foreground-alt}
+
+[module/wlan]
+type = internal/network
+interface = wlp3s0
+interval = 3.0
+
+format-connected = <ramp-signal> <label-connected>
+format-connected-underline = #9f78e1
+label-connected = %essid%
+
+format-disconnected = <label-disconnected>
+format-disconnected-underline = ${self.format-connected-underline}
+label-disconnected = %ifname% DIS
+label-disconnected-foreground = ${colors.secondary}
+
+ramp-signal-0 = 
+ramp-signal-1 = 
+ramp-signal-2 = 
+ramp-signal-3 = 
+ramp-signal-4 = 
+ramp-signal-foreground = ${colors.foreground}
+
+[module/eth]
+type = internal/network
+interface = virbr1-nic
+interval = 3.0
+
+format-connected-underline = #55aa55
+format-connected-prefix = " "
+format-connected-prefix-foreground = ${colors.foreground}
+label-connected = %local_ip%
+
+;format-disconnected = <label-disconnected>
+;format-disconnected-underline = ${self.format-connected-underline}
+;label-disconnected = %ifname% disconnected
+;label-disconnected-foreground = ${colors.foreground-alt}
+
+[module/date]
+type = internal/date
+interval = 1
+
+time = %H:%M
+time-alt = %d-%m-%Y
+format = <label>
+format-foreground = ${colors.foreground}
+format-underline = #0a6cf5
+
+label = %time%
+label-font = 1
+label-padding = 2
+label-foreground = ${colors.foreground}
+
+[module/player-mpris-simple]
+type = custom/script
+exec = ~/.config/polybar/scripts/player-mpris-simple.sh
+interval = 1
+label = %output%
+label-foreground = ${colors.background-alt}
+click-left = playerctl previous &
+click-right = playerctl next &
+click-middle = playerctl play-pause &
+
+[module/pulseaudio-control]
+type = custom/script
+tail = true
+label= %output%
+format-underline = #00ffff
+
+exec = ~/.config/polybar/scripts/pulseaudio-control.sh --listen
+click-right = exec pavucontrol &
+click-left = ~/.config/polybar/scripts/pulseaudio-control.sh --togmute
+click-middle = ~/.config/polybar/scripts/pulseaudio-control.sh --change
+scroll-up = ~/.config/polybar/scripts/pulseaudio-control.sh --up
+scroll-down = ~/.config/polybar/scripts/pulseaudio-control.sh --down
+label-padding = 2
+label-foreground = ${colors.foreground}
+
+[module/battery]
+type = internal/battery
+battery = BAT0
+adapter = ADP0
+full-at = 98
+
+format-charging = <animation-charging> <label-charging>
+format-charging-underline = #ffb52a
+
+format-discharging = <animation-discharging> <label-discharging>
+format-discharging-underline = ${self.format-charging-underline}
+
+format-full-prefix = " "
+format-full-prefix-foreground = ${colors.foreground}
+format-full-underline = ${self.format-charging-underline}
+
+ramp-capacity-0 = 
+ramp-capacity-1 = 
+ramp-capacity-2 = 
+ramp-capacity-foreground = ${colors.foreground}
+
+animation-charging-0 = 
+animation-charging-1 = 
+animation-charging-2 = 
+animation-charging-foreground = ${colors.foreground}
+animation-charging-framerate = 750
+
+animation-discharging-0 = 
+animation-discharging-1 = 
+animation-discharging-2 = 
+animation-discharging-foreground = ${colors.foreground}
+animation-discharging-framerate = 1000
+
+[module/i3]
+type = internal/i3
+format = <label-state> <label-mode>
+index-sort = true
+wrapping-scroll = false
+
+; Only show workspaces on the same output as the bar
+;pin-workspaces = true
+
+label-mode-padding = 2
+label-mode-foreground = #000
+label-mode-background = ${colors.primary}
+
+; focused = Active workspace on focused monitor
+label-focused = %index%
+label-focused-background = ${colors.background-alt}
+label-focused-underline= ${colors.primary}
+label-focused-padding = 2
+
+; unfocused = Inactive workspace on any monitor
+label-unfocused = %index%
+label-unfocused-padding = 2
+
+; visible = Active workspace on unfocused monitor
+label-visible = %index%
+label-visible-background = ${self.label-focused-background}
+label-visible-underline = ${self.label-focused-underline}
+label-visible-padding = ${self.label-focused-padding}
+
+; urgent = Workspace with urgency hint set
+label-urgent = %index%
+label-urgent-background = ${colors.alert}
+label-urgent-padding = 2
+
+; Separator in between workspaces
+; label-separator = |
+
+[module/powermenu]
+type = custom/menu
+
+expand-right = true
+
+format-spacing = 1
+
+label-open = 
+label-open-padding-right = 2
+label-open-padding-left = 0
+label-open-foreground = ${colors.secondary}
+label-close =  cancel
+label-close-foreground = ${colors.secondary}
+label-separator = |
+label-separator-foreground = ${colors.foreground-alt}
+
+menu-0-0 = reboot
+menu-0-0-exec = menu-open-1
+menu-0-1 = power off
+menu-0-1-exec = menu-open-2
+menu-0-2 = logout
+menu-0-2-exec = menu-open-3
+
+menu-1-0 = cancel
+menu-1-0-exec = menu-open-0
+menu-1-1 = reboot
+menu-1-1-exec = sudo reboot
+
+menu-2-0 = cancel
+menu-2-0-exec = menu-open-0
+menu-2-1 = power off
+menu-2-1-exec = sudo poweroff
+
+menu-3-0 = logout
+menu-3-0-exec = i3-msg exit
+menu-3-1 = cancel
+menu-3-1-exec = menu-open-0
+
+
+[settings]
+screenchange-reload = true
+;compositing-background = xor
+;compositing-background = screen
+;compositing-foreground = source
+;compositing-border = over
+;pseudo-transparency = false
+
+[global/wm]
+margin-top = 5
+margin-bottom = 5
+wm-restack = i3
+overide-redirect = true
+; vim:ft=dosini
