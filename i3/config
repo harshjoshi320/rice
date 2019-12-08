@@ -24,7 +24,7 @@ font pango:Hack, Noto Sans Regular 10
 
 # xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
 # screen before suspend. Use loginctl lock-session to lock your screen.
-exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
+exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork -e -m -k -i ~/Pictures/Japan/Shinjuku-Tokyo_sunset.jpg
 
 # Set Custom Keymap - Escape and Shifted Caps
 exec --no-startup-id setxkbmap -model pc101 -layout us -option caps:escape_shifted_capslock
@@ -33,6 +33,9 @@ exec --no-startup-id setxkbmap -model pc101 -layout us -option caps:escape_shift
 # and nm-applet is a desktop environment-independent system tray GUI for it.
 #exec --no-startup-id nm-applet
 
+# Start Blueman bluetooth manager and applet
+#exec --no-startup-id blueman-applet
+
 # Gap Settings
 
 gaps inner 10
@@ -40,11 +43,17 @@ gaps outer 5
 
 for_window [class="^.*"] border pixel 2
 
+# Start PolicyKit Agent
+exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
+
+# Start Power Manager
+#exec --no-startup-id mate-power-manager &
+
 # Restore wallpaper
 exec --no-startup-id nitrogen --restore
 
 # Launch Polybar
-exec_always --no-startup-id /home/harsh/.config/polybar/launch.sh
+exec_always --no-startup-id ~/.config/polybar/launch.sh
 
 # Start compositor manager
 exec --no-startup-id picom --backend glx --vsync  
@@ -54,7 +63,6 @@ exec --no-startup-id xinput set-prop 10 "libinput Tapping Enabled" 1
 exec --no-startup-id xinput set-prop 10 "libinput Tapping Drag Enabled" 1
 exec --no-startup-id xinput set-prop 10 "libinput Natural Scrolling Enabled" 1
 exec --no-startup-id xinput set-prop 10 "libinput Disable While Typing Enabled" 1
-exec --no-startup-id xinput set-prop 10 "libinput Accel Speed" 0.000000
 
 #Backlight control using xbacklight
 bindsym XF86MonBrightnessUp exec --no-startup-id xbacklight -inc 10
@@ -79,7 +87,7 @@ bindsym Print exec spectacle
 floating_modifier $mod
 
 # To Lock screen
-bindsym Mod4+l exec i3lock
+bindsym Mod4+l exec loginctl lock-session
 
 # start a terminal
 bindsym $mod+Return exec kitty
@@ -125,7 +133,7 @@ bindsym $mod+h split h
 bindsym $mod+v split v
 
 # enter fullscreen mode for the focused container
-bindsym $mod+f fullscreen toggle
+bindsym $mod+Shift+f fullscreen toggle
 
 # change container layout (stacked, tabbed, toggle split)
 bindsym $mod+s layout stacking
