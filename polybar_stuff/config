@@ -40,10 +40,10 @@ font-4 = Iosevka Nerd Font:pixelsize=13;3
 
 modules-left = i3 
 modules-center = player-mpris-simple 
-modules-right = pulseaudio-control battery wlan eth xkeyboard date powermenu 
+modules-right = kdeconnect pulseaudio-control battery-combined-udev wlan eth xkeyboard date powermenu 
 
-seperator = "|"
-seperator-foreground = ${colors.foreground}
+separator = "|"
+separator-foreground = ${colors.background}
 
 ;override-redirect = true
 
@@ -52,9 +52,10 @@ wm-name = "i3"
 locale = en_US.UTF-8
 
 tray-position = right
-tray-padding = 2
+tray-padding-right = 2
 tray-reparent = true
-tray-background = ${colors.secondary}
+tray-background = ${colors.background}
+tray-detach = false
 
 wm-restack = i3
 
@@ -216,6 +217,11 @@ animation-discharging-2 = 
 animation-discharging-foreground = ${colors.foreground}
 animation-discharging-framerate = 1000
 
+[module/battery-combined-udev]
+type = custom/script
+exec = ~/.config/polybar/scripts/battery-combined-udev.sh
+tail = true
+
 [module/i3]
 type = internal/i3
 format = <label-state> <label-mode>
@@ -230,26 +236,38 @@ label-mode-foreground = #000
 label-mode-background = ${colors.primary}
 
 ; focused = Active workspace on focused monitor
-label-focused = %index%
+label-focused = %index% %icon%
+label-focused-foreground = ${colors.foreground}
 label-focused-background = ${colors.background-alt}
 label-focused-underline= ${colors.primary}
 label-focused-padding = 2
 
 ; unfocused = Inactive workspace on any monitor
-label-unfocused = %index%
+label-unfocused = %index% %icon%
 label-unfocused-padding = 2
 
 ; visible = Active workspace on unfocused monitor
-label-visible = %index%
+label-visible = %index% %icon%
 label-visible-background = ${self.label-focused-background}
 label-visible-underline = ${self.label-focused-underline}
 label-visible-padding = ${self.label-focused-padding}
 
 ; urgent = Workspace with urgency hint set
-label-urgent = %index%
+label-urgent = %index% %icon%
 label-urgent-background = ${colors.alert}
 label-urgent-padding = 2
 
+ws-icon-0 = 1;
+ws-icon-1 = 2;
+ws-icon-2 = 3;
+ws-icon-3 = 4;
+ws-icon-4 = 5;
+ws-icon-5 = 6;
+ws-icon-6 = 7;
+ws-icon-7 = 8;
+ws-icon-8 = 9;
+ws-icon-9 = 10;
+ws-icon-default = 
 ; Separator in between workspaces
 ; label-separator = |
 
@@ -262,7 +280,7 @@ format-spacing = 1
 
 label-open = 
 label-open-padding-right = 2
-label-open-padding-left = 0
+label-open-padding-left = 2
 label-open-foreground = ${colors.secondary}
 label-close =  cancel
 label-close-foreground = ${colors.secondary}
