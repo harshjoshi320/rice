@@ -8,9 +8,9 @@
 # Script configuration (more info in the README)
 OSD="no"  # On Screen Display message for KDE if enabled
 INC=5  # Increment when lowering/rising the volume
-MAX_VOL=130  # Maximum volume
+MAX_VOL=100  # Maximum volume
 AUTOSYNC="no"  # All programs have the same volume if enabled
-VOLUME_ICONS=( " " " " " " )  # Volume icons array, from lower volume to higher
+VOLUME_ICONS=( " " " " " " )  # Volume icons array, from lower volume to higher
 MUTED_ICON=" "  # Muted volume icon
 MUTED_COLOR="%{F#6b6b6b}"  # Color when the audio is muted
 DEFAULT_SINK_ICON=""  # The default sink icon if a custom one isn't found
