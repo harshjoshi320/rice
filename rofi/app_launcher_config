@@ -1,0 +1,14 @@
+rofi.theme: ~/.config/rofi/NU.rasi
+
+rofi.yoffset: 0
+rofi.lines: 10
+rofi.location: 0
+
+rofi.sort: false
+rofi.columns: 2
+rofi.cycle: false
+rofi.show-icons: true
+
+rofi.display-drun: apps
+rofi.modi: drun
+
