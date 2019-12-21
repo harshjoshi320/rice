@@ -11,7 +11,7 @@ alert = #bd2c40
 [bar/NU]
 width = 100%
 height = 30
-radius = 6.0
+radius = 10.0
 fixed-center = true
 
 background = ${colors.background}
@@ -35,12 +35,12 @@ module-margin-right = 2
 font-0 = siji:pixelsize=11;0
 font-1 = Noto Sans CJK JP:pixelsize=10;0
 font-2 = Hack:size=11:antialias=false;0
-font-3 = FontAwesome:pixelsize=10;1
+font-3 = FontAwesome:pixelsize=10;0
 font-4 = Iosevka Nerd Font:pixelsize=13;3
 
-modules-left = i3 
+modules-left = mylabel i3 
 modules-center = player-mpris-simple 
-modules-right = kdeconnect pulseaudio-control battery-combined-udev wlan eth xkeyboard date powermenu 
+modules-right = system-bluetooth-bluetoothctl pulseaudio-control battery wlan eth date powermenu 
 
 separator = "|"
 separator-foreground = ${colors.background}
@@ -158,7 +158,6 @@ label = %time%
 label-padding = 2
 label-foreground = ${colors.foreground}
 
-
 [module/player-mpris-simple]
 type = custom/script
 exec = ~/.config/polybar/scripts/player-mpris-simple.sh
@@ -168,6 +167,15 @@ label-foreground = ${colors.background-alt}
 click-left = playerctl previous &
 click-right = playerctl next &
 click-middle = playerctl play-pause &
+
+[module/system-bluetooth-bluetoothctl]
+type = custom/script
+exec = ~/.config/polybar/scripts/system-bluetooth-bluetoothctl.sh
+label = %output%
+label-foreground = ${colors.foreground}
+tail = true
+click-left = ~/.config/polybar/scripts/system-bluetooth-bluetoothctl.sh --toggle &
+click-right = blueberry
 
 [module/pulseaudio-control]
 type = custom/script
@@ -217,10 +225,13 @@ animation-discharging-2 = 
 animation-discharging-foreground = ${colors.foreground}
 animation-discharging-framerate = 1000
 
-[module/battery-combined-udev]
-type = custom/script
-exec = ~/.config/polybar/scripts/battery-combined-udev.sh
-tail = true
+[module/mylabel]
+type = custom/text
+content = "    "
+content-background = ${colors.background}
+content-foreground = ${colors.background-alt}
+content-padding = 4
+click-left = rofi -show drun -config ~/.config/rofi/app_launcher_config
 
 [module/i3]
 type = internal/i3
@@ -253,7 +264,7 @@ label-visible-underline = ${self.label-focused-underline}
 label-visible-padding = ${self.label-focused-padding}
 
 ; urgent = Workspace with urgency hint set
-label-urgent = %index% %icon%
+label-urgent = %icon%
 label-urgent-background = ${colors.alert}
 label-urgent-padding = 2
 
@@ -278,7 +289,7 @@ expand-right = true
 
 format-spacing = 1
 
-label-open = 
+label-open = 
 label-open-padding-right = 2
 label-open-padding-left = 2
 label-open-foreground = ${colors.secondary}
