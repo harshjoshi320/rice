@@ -17,7 +17,7 @@
     active-foreground:           rgba ( 101, 172, 255, 100 % );
     lightbg:                     rgba ( 238, 232, 213, 100 % );
     selected-active-foreground:  rgba ( 249, 249, 249, 100 % );
-    alternate-active-background: rgba ( 75, 81, 96, 89 % );
+    alternate-active-background: rgba ( 107, 107, 107, 100 % );
     background:                  rgba ( 35, 38, 39, 100 % );
     alternate-normal-foreground: @foreground;
     normal-background:           @background;
@@ -37,13 +37,13 @@
     font: "Hack Nerd Font 11";
 }
 #window {
-    width:	      800;
+    width:	      1003;
     background-color: @background;
-    border:           0;
+    border:           5;
     padding:          5;
 }
 #mainbox {
-    border:  0;
+    border:  5;
     padding: 5;
 }
 #message {
@@ -59,15 +59,18 @@
     border:       2px 0px 0px ;
     border-color: @background;
     spacing:      5px ;
-    scrollbar:    true;
-    padding:      2px 0px 0px ;
+    layout:	  Horizontal;
+    scrollbar:    false;
+    padding:      2px 5px 0px ;
 }
 #element {
+    margin:  5;
     border:  0;
-    padding: 5px 5px;
+    border-color: @alternate-active-background;
+    padding: 10px 10px;
 }
 #element.normal.normal {
-    background-color: @normal-background;
+    background-color: @alternate-active-background;
     text-color:       @normal-foreground;
 }
 #element.normal.urgent {
@@ -91,7 +94,7 @@
     text-color:       @selected-active-foreground;
 }
 #element.alternate.normal {
-    background-color: @alternate-normal-background;
+    background-color: @alternate-active-background;
     text-color:       @alternate-normal-foreground;
 }
 #element.alternate.urgent {
@@ -101,13 +104,6 @@
 #element.alternate.active {
     background-color: @alternate-active-background;
     text-color:       @alternate-active-foreground;
-}
-#scrollbar {
-    width:        4px ;
-    border:       0;
-    handle-color: @selected-normal-background;
-    handle-width: 8px ;
-    padding:      0;
 }
 #mode-switcher {
     border:       2px 0px 0px ;
@@ -126,26 +122,11 @@
     text-color: @normal-foreground;
     padding:    1px ;
 }
-#case-indicator {
-    spacing:    0;
-    text-color: @normal-foreground;
-}
-#entry {
-    spacing:    0;
-    text-color: @normal-foreground;
-}
 #prompt {
     spacing:    0;
     padding:	0px 4px 0px;
     text-color: @selected-normal-background;
 }
 #inputbar {
-    children:   [ prompt,textbox-prompt-colon,entry,case-indicator ];
-}
-#textbox-prompt-colon {
-    expand:     false;
-    padding:	0px 2px 0px;
-    str:        ">>";
-    margin:     0px 0.3em 0em 0em ;
-    text-color: @normal-foreground;
+    children:   [ prompt];
 }
