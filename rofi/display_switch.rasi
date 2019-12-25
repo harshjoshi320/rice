@@ -37,7 +37,6 @@
     font: "Hack Nerd Font 11";
 }
 #window {
-    width:	      1003;
     background-color: @background;
     border:           5;
     padding:          5;
@@ -55,6 +54,7 @@
     text-color: @foreground;
 }
 #listview {
+    columns:	  4;
     fixed-height: 0;
     border:       2px 0px 0px ;
     border-color: @background;
