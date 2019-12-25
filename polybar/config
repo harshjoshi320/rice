@@ -2,7 +2,7 @@
 [colors]
 background = #232627
 background-alt = #00e59b
-foreground = #ffffff
+foreground = #c0c0c0
 foreground-alt = #5d5d6c
 primary = #00e59b
 secondary = #f7590a
@@ -18,7 +18,7 @@ background = ${colors.background}
 foreground = ${colors.foreground}
 
 line-size = 0
-line-color = #f00
+line-color = #00e58b
 
 border-top-size = 10
 border-left-size = 12
@@ -26,23 +26,21 @@ border-right-size = 12
 border-bottom-size = 0
 border-color = #00000000
 
-padding-left = 0
+padding-left = 8
 padding-right = 4
 
 module-margin = 2
 
-font-0 = siji:pixelsize=11;1
-font-1 = Noto Sans CJK JP:pixelsize=11;1
-font-2 = Hack:size=11:antialias=false;0
-font-3 = FontAwesome:pixelsize=11;0
-font-4 = Iosevka Nerd Font:pixelsize=13;3
+font-0 = Noto Sans CJK JP:pixelsize=11;1
+font-1 = Fira Sans:pixelsize=11;3
+font-2 = Hack Nerd Font:size=12:antialias=false;2
+font-3 = Hack Nerd Font:size=12:antialias=false;2
 
 modules-left = mylabel i3 
 modules-center = player-mpris-simple 
-modules-right = kdeconnect system-bluetooth-bluetoothctl pulseaudio-control battery wlan eth date powermenu 
+modules-right = system-bluetooth-bluetoothctl pulseaudio-control battery wlan eth date powermenu-alt 
 
-separator = "|"
-separator-foreground = ${colors.background}
+separator = " "
 
 ;override-redirect = true
 
@@ -50,11 +48,12 @@ wm-name = "i3"
 
 locale = en_US.UTF-8
 
-tray-position = right
+tray-position = center
 tray-padding-right = 2
 tray-reparent = true
 tray-background = ${colors.background}
 tray-detach = false
+tray-offset-x = 480
 
 wm-restack = i3
 
@@ -76,7 +75,7 @@ tail = true
 type = internal/xkeyboard
 blacklist-0 = num lock
 
-format-prefix = " "
+format-prefix = " "
 format-prefix-foreground = ${colors.foreground}
 format-prefix-underline = ${colors.secondary}
 
@@ -114,19 +113,20 @@ interval = 3.0
 format-padding = 2
 
 format-connected = <ramp-signal> <label-connected>
-format-connected-underline = #9f78e1
+format-connected-underline = #D900FF
 label-connected = %essid%
+format-connected-font = 3
 
 format-disconnected = <label-disconnected>
 format-disconnected-underline = ${self.format-connected-underline}
-label-disconnected = %ifname% DIS
+label-disconnected = 睊 %ifname%
 label-disconnected-foreground = ${colors.secondary}
 
-ramp-signal-0 = 
-ramp-signal-1 = 
-ramp-signal-2 = 
-ramp-signal-3 = 
-ramp-signal-4 = 
+ramp-signal-0 = 直
+ramp-signal-1 = 直
+ramp-signal-2 = 直
+ramp-signal-3 = 直
+ramp-signal-4 = 直
 ramp-signal-foreground = ${colors.foreground}
 
 [module/eth]
@@ -152,7 +152,7 @@ time = %H:%M
 time-alt = %d-%m-%Y
 format = <label>
 format-foreground = ${colors.foreground}
-format-underline = #0a6cf5
+format-underline = #9BFF00
 
 label = %time%
 label-padding = 2
@@ -164,6 +164,7 @@ exec = ~/.config/polybar/scripts/player-mpris-simple.sh
 interval = 1
 label = %output%
 label-foreground = ${colors.background-alt}
+label-font = 3
 click-left = playerctl previous &
 click-right = playerctl next &
 click-middle = playerctl play-pause &
@@ -171,9 +172,12 @@ click-middle = playerctl play-pause &
 [module/system-bluetooth-bluetoothctl]
 type = custom/script
 exec = ~/.config/polybar/scripts/system-bluetooth-bluetoothctl.sh
+tail = true
+
 label = %output%
 label-foreground = ${colors.foreground}
-tail = true
+format-underline = #f7ff00
+
 click-left = ~/.config/polybar/scripts/system-bluetooth-bluetoothctl.sh --toggle &
 click-right = blueberry
 
@@ -198,38 +202,43 @@ adapter = ADP0
 full-at = 98
 
 format-charging = <animation-charging> <label-charging>
-format-charging-underline = #ffb52a
+format-charging-underline = #FF8900
 
 format-discharging = <animation-discharging> <label-discharging>
 format-discharging-underline = ${self.format-charging-underline}
 
-format-full-prefix = " "
+
+format-full-prefix = "⚡ "
 format-full-prefix-foreground = ${colors.foreground}
 format-full-underline = ${self.format-charging-underline}
 
-ramp-capacity-0 = 
-ramp-capacity-1 = 
-ramp-capacity-2 = 
+ramp-capacity-0 = 
+ramp-capacity-1 = 
+ramp-capacity-2 = 
 ramp-capacity-foreground = ${colors.foreground}
 
-animation-charging-0 = 
-animation-charging-1 = 
-animation-charging-2 = 
+animation-charging-0 = 
+animation-charging-1 = 
+animation-charging-2 = 
 animation-charging-foreground = ${colors.foreground}
 animation-charging-framerate = 750
 
-animation-discharging-0 = 
-animation-discharging-1 = 
-animation-discharging-2 = 
+animation-discharging-0 = 
+animation-discharging-1 = 
+animation-discharging-2 = 
 animation-discharging-foreground = ${colors.foreground}
 animation-discharging-framerate = 1000
 
 [module/mylabel]
 type = custom/text
-content = "    "
+
+#content-underline = #00e59b
+content = ""
+content-font = 4
 content-background = ${colors.background}
-content-foreground = ${colors.background-alt}
-content-padding = 4
+content-foreground = #00B9FF
+content-padding = 0
+
 click-left = rofi -show drun -config ~/.config/rofi/app_launcher_config
 
 [module/i3]
@@ -247,8 +256,8 @@ label-mode-background = ${colors.primary}
 
 ; focused = Active workspace on focused monitor
 label-focused = %index% %icon%
-label-focused-foreground = ${colors.foreground}
-label-focused-background = ${colors.background-alt}
+label-focused-foreground = ${colors.background-alt}
+label-focused-background = ${colors.background}
 label-focused-underline= ${colors.primary}
 label-focused-padding = 2
 
@@ -267,19 +276,29 @@ label-urgent = %index% %icon%
 label-urgent-background = ${colors.alert}
 label-urgent-padding = 2
 
-ws-icon-0 = 1;
-ws-icon-1 = 2;
-ws-icon-2 = 3;
-ws-icon-3 = 4;
-ws-icon-4 = 5;
-ws-icon-5 = 6;
-ws-icon-6 = 7;
-ws-icon-7 = 8;
-ws-icon-8 = 9;
+ws-icon-0 = 1;
+ws-icon-1 = 2;
+ws-icon-2 = 3;
+ws-icon-3 = 4;
+ws-icon-4 = 5;
+ws-icon-5 = 6;
+ws-icon-6 = 7;
+ws-icon-7 = 8;
+ws-icon-8 = 9;
 ws-icon-9 = 10;
 ws-icon-default = 
 ; Separator in between workspaces
 ; label-separator = |
+
+[module/powermenu-alt]
+type = custom/text
+
+content = 
+content-foreground = ${colors.secondary}
+content-padding = 1
+content-underline = #ff0004
+
+click-left = ~/.config/rofi/powermenu.sh
 
 [module/powermenu]
 type = custom/menu
@@ -287,8 +306,9 @@ type = custom/menu
 expand-right = true
 
 format-spacing = 1
+format-underline = #ff0004
 
-label-open = 
+label-open = 
 label-open-padding-right = 2
 label-open-padding-left = 2
 label-open-foreground = ${colors.secondary}
