@@ -2,8 +2,12 @@
 
 CHOICE=$(echo 'Inbuilt  [eDP1]
 Switch To External  [HDMI1]
-Cast To External  = 
-Extend Display  + ' | rofi -config ~/.config/rofi/display_switch_config -dmenu -p "Select Display Mode")
+Cast To External 
+Extend Display  + ' | rofi  \
+	-config ~/.config/rofi/display_switch_config  \
+	-me-select-entry "" \
+	-me-accept-entry "MousePrimary" \
+	-dmenu -p "Select Display Mode")
 [[ -z $CHOICE ]] && exit
 
 case "$CHOICE" in
@@ -13,7 +17,7 @@ case "$CHOICE" in
 	'Switch To External  [HDMI1]')
 		autorandr --load external_only
 		;;
-	'Cast To External  = ')
+	'Cast To External ')
 		autorandr --load screencast
 		;;
 	'Extend Display  + ')
