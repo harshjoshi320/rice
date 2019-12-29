@@ -7,5 +7,5 @@ if [ "$player_status" = "Playing" ]; then
 elif [ "$player_status" = "Paused" ]; then
     echo "%{F#7FFF00}♪%{F-}%{F#777777} $(playerctl metadata -f '%{T2}{{artist}}%{T-}') - $(playerctl metadata -f '%{T2}{{title}}%{T-}')%{F-}"
 else
-    echo " "
+    echo " "
 fi
