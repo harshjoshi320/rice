@@ -164,7 +164,6 @@ exec = ~/.config/polybar/scripts/player-mpris-simple.sh
 interval = 1
 label = %output%
 label-foreground = ${colors.background-alt}
-label-font = 3
 click-left = playerctl previous &
 click-right = playerctl next &
 click-middle = playerctl play-pause &
