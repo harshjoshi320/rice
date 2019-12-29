@@ -5,8 +5,6 @@ Switch To External  [HDMI1]
 Cast To External 
 Extend Display  + ' | rofi  \
 	-config ~/.config/rofi/display_switch_config  \
-	-me-select-entry "" \
-	-me-accept-entry "MousePrimary" \
 	-dmenu -p "Select Display Mode")
 [[ -z $CHOICE ]] && exit
 

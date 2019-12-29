@@ -2,6 +2,7 @@
 
 i3lock -e \
 	-m \
+	-n \
 	--force-clock \
 	--insidevercolor=31454777 \
 	--insidewrongcolor=31454777 \
