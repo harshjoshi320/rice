@@ -5,15 +5,13 @@ CHOICE=$(echo " Lock Session
  Restart
  Shutdown" | rofi  \
 	-config ~/.config/rofi/powermenu_config  \
-	-me-select-entry "" \
-	-me-accept-entry "MousePrimary" \
 	-dmenu -p "Choose Power Option")
 [[ -z $CHOICE ]] && exit
 
 function confirm_choice {
 	OP=$@
 	ACTION=$(echo "$OP
-Cancel" | rofi -dmenu -p "Confirm $OP")
+Cancel" | rofi -config ~/.config/rofi/powermenu_config -dmenu -p "Confirm $OP")
 	[[ -z $ACTION ]] && exit 1
 
 	case "$ACTION" in
@@ -34,7 +32,8 @@ case "$CHOICE" in
 		~/.config/i3/i3lock-command.sh
 		;;
 	" Logout")
-		if [ $(confirm_choice $CHOICE) = "go" ]; then
+		choice=confirm_choice $CHOICE
+		if [ "$(confirm_choice $CHOICE)" = "go" ]; then
 			i3-msg exit
 		else
 			exit
