@@ -41,14 +41,14 @@ case "$CHOICE" in
 		;;
 	" Restart")
 		if [ $(confirm_choice $CHOICE) = "go" ]; then
-			rofi -e "rebooting"
+			reboot
 		else
 			exit
 		fi
 		;;
 	" Shutdown")
 		if [ $(confirm_choice $CHOICE) = "go" ]; then
-			rofi -e "shutting down"
+			poweroff
 		else
 			exit
 		fi
