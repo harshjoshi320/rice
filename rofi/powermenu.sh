@@ -34,7 +34,20 @@ case "$CHOICE" in
 	" Logout")
 		choice=confirm_choice $CHOICE
 		if [ "$(confirm_choice $CHOICE)" = "go" ]; then
-			i3-msg exit
+			case "$GDMSESSION" in
+				"i3")
+					i3-msg exit
+					;;
+				"herbstluftwm")
+					herbstclient quit
+					;;
+				"bspwm")
+					bspc quit
+					;;
+				*)
+					rofi -e "WM not identified"
+					;;
+				esac
 		else
 			exit
 		fi

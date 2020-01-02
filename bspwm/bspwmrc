@@ -1,0 +1,54 @@
+#! /bin/sh
+
+pkill sxhkd
+sxhkd &
+
+## Start compositor
+#pkil picom
+#picom &
+#
+##Disable beep sound
+#xset -b
+#
+## Set Caps as Escape, Shift + Caps = Caps
+#setxkbmap -model pc101 -layout us -option caps:escape_shifted_capslock
+#
+## Start dunst notification handler
+#dunst &
+#
+## Start lock screen 
+#xss-lock --transfer-sleep-lock -- ~/.config/i3/i3lock-command.sh
+#
+## Launch polybar
+#~/.config/bspwm/launch.sh
+#
+## Start kdeconnect daemon
+#/usr/lib/kdeconnectd &
+#
+## Start policykit agent for privilege elevation
+#/usr/lib/polkit-gnome-authentication-agent-1 &
+#
+## Restore Wallpaper
+#nitrogen --restore &
+
+# Touchpad settings
+xinput set-prop "Elan Touchpad" "libinput Tapping Enabled" 1
+xinput set-prop "Elan Touchpad" "libinput Tapping Drag Enabled" 1
+xinput set-prop "Elan Touchpad" "libinput Natural Scrolling Enabled" 1
+xinput set-prop "Elan Touchpad" "libinput Disable While Typing Enabled" 1
+
+
+bspc monitor -d I II III IV V VI VII VIII IX X
+
+bspc config border_width         3
+bspc config window_gap          15
+
+bspc config split_ratio          0.50
+bspc config borderless_monocle   true
+bspc config gapless_monocle      false
+
+bspc rule -a Gimp desktop='^8' state=floating follow=on
+bspc rule -a Chromium desktop='^2'
+bspc rule -a mplayer2 state=floating
+bspc rule -a Kupfer.py focus=on
+bspc rule -a Screenkey manage=off

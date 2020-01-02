@@ -8,6 +8,6 @@ while pgrep -u $UID -x polybar >/dev/null; do sleep 1; done
 
 # Launch mybar
 echo "---" | tee -a /tmp/mybar.log
-polybar NU >>/tmp/polybar1.log 2>&1 &
+polybar BSPNU >>/tmp/polybar1.log 2>&1 &
 
 echo "Bar launched..."
