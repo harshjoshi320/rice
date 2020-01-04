@@ -8,6 +8,60 @@ primary = #00e59b
 secondary = #f7590a
 alert = #bd2c40
 
+[bar/HLNU]
+width = 100%
+height = 32
+radius = 10.0
+fixed-center = true
+
+background = ${colors.background}
+foreground = ${colors.foreground}
+
+line-size = 0
+line-color = #00e58b
+
+border-top-size = 8
+border-left-size = 12
+border-right-size = 12
+border-bottom-size = 0
+border-color = #00000000
+
+padding-left = 3
+padding-right = 3
+
+module-margin = 2
+
+font-0 = Hack Nerd Font:size=10:antialias=false:style=Bold;2
+font-1 = Noto Sans CJK JP:pixelsize=10:style=Bold;1
+
+modules-left = mylabel info-hlwm-workspaces time date 
+modules-center = player-mpris-simple 
+modules-right = system-bluetooth-bluetoothctl battery pulseaudio-control wlan eth powermenu-alt 
+
+separator = " "
+
+;override-redirect = true
+
+wm-name = "herbstluftwm"
+
+locale = en_US.UTF-8
+
+tray-position = center
+tray-padding-right = 2
+tray-reparent = true
+tray-background = ${colors.background}
+tray-detach = false
+tray-offset-x = 480
+
+wm-restack = herbstluftwm
+
+dpi-x = 96
+dpi-y = 96
+
+cursor-click = pointer
+cursor-scroll = ns-resize
+
+
 [bar/i3NU]
 width = 100%
 height = 32
@@ -64,7 +118,7 @@ cursor-scroll = ns-resize
 [bar/BSPNU]
 width = 100%
 height = 32
-radius = 10.0
+radius = 15.0
 fixed-center = true
 
 background = ${colors.background}
@@ -73,9 +127,9 @@ foreground = ${colors.foreground}
 line-size = 0
 line-color = #00e58b
 
-border-top-size = 10
-border-left-size = 12
-border-right-size = 12
+border-top-size = 5
+border-left-size = 18
+border-right-size = 18
 border-bottom-size = 0
 border-color = #00000000
 
@@ -258,24 +312,47 @@ click-left = rofi -show drun -config ~/.config/rofi/app_launcher_config
 [module/bspwm]
 type = internal/bspwm
 
-label-focused = %index%
-label-focused-background = ${colors.background-alt}
+label-focused = %index% %icon%
+label-focused-foreground = ${colors.background-alt}
+label-focused-background = ${colors.background}
 label-focused-underline= ${colors.primary}
-label-focused-padding = 2
+label-focused-padding = 1
 
-label-occupied = %index%
-label-occupied-padding = 2
+label-occupied = %index% %icon%
+label-occupied-foreground = ${colors.foreground}
+label-occupied-padding = 1
 
-label-urgent = %index%!
+label-urgent = %index% %icon%
+label-foreground-foreground = ${colors.background}
 label-urgent-background = ${colors.alert}
-label-urgent-padding = 2
+label-urgent-padding = 1
 
-label-empty = %index%
+label-empty = 
 label-empty-foreground = ${colors.foreground-alt}
-label-empty-padding = 2
+label-empty-padding = 1
 
+ws-icon-0 = 1;
+ws-icon-1 = 2;
+ws-icon-2 = 3;
+ws-icon-3 = 4;
+ws-icon-4 = 5;
+ws-icon-5 = 6;
+ws-icon-6 = 7;
+ws-icon-7 = 8;
+ws-icon-8 = 9;
+ws-icon-9 = 10;
+ws-icon-default = 
+;
 ; Separator in between workspaces
 ; label-separator = |
+
+[module/info-hlwm-workspaces]
+type = custom/script
+exec = ~/.config/polybar/scripts/info-hlwm-workspaces.sh
+tail = true
+scroll-up = herbstclient use_index -1 --skip-visible &
+scroll-down = herbstclient use_index +1 --skip-visible &
+label-padding = 1
 
 [module/i3]
 type = internal/i3
@@ -322,7 +399,7 @@ ws-icon-6 = 7;
 ws-icon-7 = 8;
 ws-icon-8 = 9;
 ws-icon-9 = 10;
-ws-icon-default = 
+ws-icon-default = 
 ; Separator in between workspaces
 ; label-separator = |
 
