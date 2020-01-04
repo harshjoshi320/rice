@@ -20,7 +20,7 @@ font pango:Fira Sans 11
 #font pango:DejaVu Sans Mono 8
 
 # Disable beep sound
-exec --no-startup-id xset -b
+exec --no-startup-id xset b off
 
 # Set Custom Keymap - Escape and Shifted Caps
 exec --no-startup-id setxkbmap -model pc101 -layout us -option caps:escape_shifted_capslock
