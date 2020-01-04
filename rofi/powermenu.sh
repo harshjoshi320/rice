@@ -1,6 +1,7 @@
 #!/bin/bash
 
 CHOICE=$(echo " Lock Session
+ Suspend Session
  Logout
  Restart
  Shutdown" | rofi  \
@@ -30,6 +31,9 @@ Cancel" | rofi -config ~/.config/rofi/powermenu_config -dmenu -p "Confirm $OP")
 case "$CHOICE" in
 	" Lock Session")
 		~/.config/i3/i3lock-command.sh
+		;;
+	" Suspend Session")
+		systemctl suspend
 		;;
 	" Logout")
 		choice=confirm_choice $CHOICE

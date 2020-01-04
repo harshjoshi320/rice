@@ -55,7 +55,7 @@
     text-color: @foreground;
 }
 #listview {
-    fixed-height: 0;
+    lines:	  5;
     border:       2px 0px 0px ;
     border-color: @background;
     spacing:      5px ;
