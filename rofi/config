@@ -2,7 +2,7 @@ rofi.theme: ~/.config/rofi/NU.rasi
 rofi.lines: 5
 rofi.location: 2
 rofi.modi: drun,run,calc:qalc +u8 -nocurrencies
-rofi.yoffset: 45
+rofi.yoffset: 56
 
 rofi.cycle: true;
 rofi.display-drun: apps

@@ -1,6 +1,6 @@
 rofi.theme: ~/.config/rofi/powermenu.rasi
 rofi.location: 3
 rofi.xoffset: -12
-rofi.yoffset: 45
+rofi.yoffset: 56
 rofi.lines: 4
 
