@@ -23,7 +23,7 @@ i3lock -e \
 	--time-align "0" \
 	--time-font="Fira Sans" \
 	--timesize=36 \
-	--datestr="%A, %D" \
+	--datestr="%A, %d/%m/%Y" \
 	--datecolor=fff9eeff \
 	--datepos="960:580" \
 	--date-align="0" \
