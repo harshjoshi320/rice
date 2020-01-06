@@ -64,7 +64,7 @@ cursor-scroll = ns-resize
 
 [bar/i3NU]
 width = 100%
-height = 32
+height = 40
 radius = 10.0
 fixed-center = true
 
@@ -90,7 +90,7 @@ font-1 = Noto Sans CJK JP:pixelsize=10:style=Bold;1
 
 modules-left = time date mylabel i3 
 modules-center = player-mpris-simple 
-modules-right = system-bluetooth-bluetoothctl battery pulseaudio-control wlan eth powermenu-alt 
+modules-right = battery pulseaudio-control system-bluetooth-bluetoothctl wlan eth powermenu-alt 
 
 separator = " "
 
@@ -141,9 +141,9 @@ module-margin = 2
 font-0 = Hack Nerd Font:size=10:antialias=false:style=Bold;2
 font-1 = Noto Sans CJK JP:pixelsize=10:style=Bold;1
 
-modules-left = time date mylabel bspwm 
-modules-center = player-mpris-simple 
-modules-right = system-bluetooth-bluetoothctl battery pulseaudio-control wlan eth powermenu-alt 
+modules-left = date bspwm mylabel player-mpris-simple  
+modules-center = time  
+modules-right = battery pulseaudio-control system-bluetooth-bluetoothctl wlan eth powermenu-alt 
 
 separator = " "
 
@@ -172,7 +172,7 @@ cursor-scroll = ns-resize
 type = internal/network
 interface = wlp3s0
 interval = 3.0
-format-padding = 2
+format-connected-padding = 0
 
 format-connected = <ramp-signal> <label-connected>
 format-connected-underline = #D900FF
@@ -183,6 +183,7 @@ format-disconnected = <label-disconnected>
 format-disconnected-underline = ${self.format-connected-underline}
 label-disconnected = 睊 %ifname%
 label-disconnected-foreground = ${colors.secondary}
+format-disconnected-padding = 0
 
 ramp-signal-0 = 直
 ramp-signal-1 = 直
@@ -196,6 +197,7 @@ type = internal/network
 interface = enp2s0
 interval = 3.0
 
+format-padding = 0
 format-connected-underline = #55aa55
 format-connected-prefix = " "
 format-connected-prefix-foreground = ${colors.foreground}
@@ -214,6 +216,7 @@ time = %I:%M %p
 format =  <label>
 format-foreground = ${colors.foreground}
 format-underline = #9BFF00
+format-padding = 0
 
 label = %time%
 label-foreground = ${colors.foreground}
@@ -229,6 +232,7 @@ format-underline = #9BFF00
 
 label = %date%
 label-foreground = ${colors.foreground}
+format-padding = 0
 
 
 [module/player-mpris-simple]
@@ -249,6 +253,7 @@ tail = true
 label = %output%
 label-foreground = ${colors.foreground}
 format-underline = #f7ff00
+format-padding = 0
 
 click-left = ~/.config/polybar/scripts/system-bluetooth-bluetoothctl.sh --toggle &
 click-right = blueberry
@@ -258,6 +263,7 @@ type = custom/script
 tail = true
 label= %output%
 format-underline = #00ffff
+format-padding = 0
 
 exec = ~/.config/polybar/scripts/pulseaudio-control.sh --listen
 click-right = exec pavucontrol &
@@ -274,11 +280,13 @@ adapter = ADP0
 full-at = 98
 
 format-charging =  ⚡ <label-charging>
-format-charging-underline = #FF8900
+;format-charging-underline = #FF8900
+format-charging-underline = #9BFF70 
+format-charging-padding = 0
 
 format-discharging =  <ramp-capacity> <label-discharging>
 format-discharging-underline = ${self.format-charging-underline}
-
+format-discharging-padding = 0
 
 format-full-prefix = " "
 format-full-prefix-foreground = ${colors.foreground}
@@ -312,36 +320,36 @@ click-left = rofi -show drun -config ~/.config/rofi/app_launcher_config
 [module/bspwm]
 type = internal/bspwm
 
-label-focused = %index% %icon%
+label-focused = %icon%
 label-focused-foreground = ${colors.background-alt}
 label-focused-background = ${colors.background}
 label-focused-underline= ${colors.primary}
 label-focused-padding = 1
 
-label-occupied = %index% %icon%
+label-occupied = %icon%
 label-occupied-foreground = ${colors.foreground}
 label-occupied-padding = 1
 
-label-urgent = %index% %icon%
+label-urgent = %icon%
 label-foreground-foreground = ${colors.background}
 label-urgent-background = ${colors.alert}
 label-urgent-padding = 1
 
-label-empty = 
+label-empty = %icon%
 label-empty-foreground = ${colors.foreground-alt}
 label-empty-padding = 1
 
-ws-icon-0 = 1;
-ws-icon-1 = 2;
-ws-icon-2 = 3;
-ws-icon-3 = 4;
-ws-icon-4 = 5;
-ws-icon-5 = 6;
-ws-icon-6 = 7;
-ws-icon-7 = 8;
-ws-icon-8 = 9;
+ws-icon-0 = 1;1
+ws-icon-1 = 2;2
+ws-icon-2 = 3;3
+ws-icon-3 = 4;4
+ws-icon-4 = 5;5
+ws-icon-5 = 6;6
+ws-icon-6 = 7;7
+ws-icon-7 = 8;8
+ws-icon-8 = 9;9
 ws-icon-9 = 10;
-ws-icon-default = 
+ws-icon-default =  
 ;
 ; Separator in between workspaces
 ; label-separator = |
@@ -371,22 +379,24 @@ label-mode-background = ${colors.primary}
 label-focused = %index% %icon%
 label-focused-foreground = ${colors.background-alt}
 label-focused-background = ${colors.background}
-label-focused-underline= ${colors.primary}
+;label-focused-underline= ${colors.primary}
 label-focused-padding = 1
 
 ; unfocused = Inactive workspace on any monitor
 label-unfocused = %index% %icon%
+;label-unfocused-underline= ${colors.foreground}
 label-unfocused-padding = 1
 
 ; visible = Active workspace on unfocused monitor
 label-visible = %index% %icon%
 label-visible-background = ${self.label-focused-background}
-label-visible-underline = ${self.label-focused-underline}
+;label-visible-underline = ${self.label-focused-underline}
 label-visible-padding = ${self.label-focused-padding}
 
 ; urgent = Workspace with urgency hint set
 label-urgent = %index% %icon%
 label-urgent-background = ${colors.alert}
+;label-urgent-underline= ${colors.alert}
 label-urgent-padding = 1
 
 ws-icon-0 = 1;
@@ -409,6 +419,7 @@ type = custom/text
 content = 
 content-foreground = ${colors.secondary}
 content-underline = #ff0004
+content-padding = 1
 
 click-left = ~/.config/rofi/powermenu.sh
 
