@@ -94,8 +94,8 @@ alt + g
 #
 
 # set the window state
-alt + {t,shift + t,shift + space,f}
-	bspc node -t {tiled,pseudo_tiled,floating,\~fullscreen}
+alt + {e,shift + e,shift + space,f}
+	bspc node -t {tiled,pseudo_tiled,\~floating,\~fullscreen}
 
 # set the node flags
 alt + ctrl + {m,x,y,z}
@@ -114,8 +114,12 @@ alt + {a,shift + a,comma,period}
 	bspc node -f @{parent,brother,first,second}
 
 # focus the next/previous node in the current desktop
-super + {_,shift + }c
+alt + {_,shift + }Tab
  	bspc node -f {next,prev}.local
+
+# focus next floating/ prev tiled window
+alt + {_,shift + }t
+	bspc node -f {next.floating,prev.local}
 
 #
 # focus the next/previous desktop in the current monitor
