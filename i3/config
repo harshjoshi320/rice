@@ -72,10 +72,10 @@ exec --no-startup-id nitrogen --restore
 exec_always --no-startup-id ~/.config/i3/launch.sh
 
 # Touchpad settings
-exec --no-startup-id xinput set-prop "Elan Touchpad" "libinput Tapping Enabled" 1
-exec --no-startup-id xinput set-prop "Elan Touchpad" "libinput Tapping Drag Enabled" 1
-exec --no-startup-id xinput set-prop "Elan Touchpad" "libinput Natural Scrolling Enabled" 1
-exec --no-startup-id xinput set-prop "Elan Touchpad" "libinput Disable While Typing Enabled" 1
+# exec --no-startup-id xinput set-prop "Elan Touchpad" "libinput Tapping Enabled" 1
+# exec --no-startup-id xinput set-prop "Elan Touchpad" "libinput Tapping Drag Enabled" 1
+# exec --no-startup-id xinput set-prop "Elan Touchpad" "libinput Natural Scrolling Enabled" 1
+# exec --no-startup-id xinput set-prop "Elan Touchpad" "libinput Disable While Typing Enabled" 1
 
 #Backlight control using xbacklight
 bindsym XF86MonBrightnessUp exec --no-startup-id xbacklight -inc 10
