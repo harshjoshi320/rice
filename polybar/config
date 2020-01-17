@@ -51,7 +51,7 @@ tray-padding-right = 2
 tray-reparent = true
 tray-background = ${colors.background}
 tray-detach = false
-tray-offset-x = 480
+tray-offset-x = 400
 
 wm-restack = herbstluftwm
 
@@ -141,7 +141,7 @@ module-margin = 2
 font-0 = Hack Nerd Font:size=10:antialias=false:style=Bold;2
 font-1 = Noto Sans CJK JP:pixelsize=10:style=Bold;1
 
-modules-left = date bspwm mylabel player-mpris-simple  
+modules-left = date bspwm mylabel player-mpris-tail  
 modules-center = time  
 modules-right = battery pulseaudio-control system-bluetooth-bluetoothctl wlan eth powermenu-alt 
 
@@ -158,7 +158,7 @@ tray-padding-right = 2
 tray-reparent = true
 tray-background = ${colors.background}
 tray-detach = false
-tray-offset-x = 480
+tray-offset-x = 440
 
 wm-restack = bspwm
 
@@ -226,6 +226,7 @@ type = internal/date
 interval = 1
 
 date = "%d-%m-%Y"
+date-alt = "%A"
 format =  <label>
 format-foreground = ${colors.foreground}
 format-underline = #9BFF00
@@ -234,6 +235,11 @@ label = %date%
 label-foreground = ${colors.foreground}
 format-padding = 0
 
+[module/player-mpris-tail]
+type = custom/script
+exec = ~/.config/polybar/scripts/player-mpris-tail.py -f '{icon} {:artist:t40:{artist} - {title}:}' -b {'vlc','cmus' --truncate-text "..." --icon-none '' --icon-playing '%{F#7FFF00}♪%{F-}' --icon-paused '' --icon-stopped ''
+label = %output%
+tail = true
 
 [module/player-mpris-simple]
 type = custom/script

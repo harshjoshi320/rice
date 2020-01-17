@@ -41,31 +41,36 @@ XF86AudioPrev
 
 # Launch display switcher
 super + p
-	~/.config/i3/display_modes.sh
+	~/bin/display_modes.sh
 
 # Launch Display Switcher
 alt + shift + n
 	networkmanager_dmenu
 
-### Take screenshot using Spectacle
+### Take screenshot using flameshot
 # Capture current monitor, run in backgroud
 Print 
-	spectacle -b -m
-# Capture active window, run in background
+	flameshot full -p ~/Pictures/Screenshots/ &
+# Capture with gui
 super + Print 
-	spectacle -b -a        
-# Capture the entire desktop and open gui
-shift + Print 
-	spectacle -g          
+	flameshot gui -p ~/Pictures/Screenshots/ &
 
 # Launch powermenu
 alt + shift + e 
-	~/.config/rofi/powermenu.sh
+	~/bin/powermenu.sh
 
 # Screen Lock
 super + l
 	loginctl lock-session
 
+# flash focused window [ nc_flash_window ]
+alt + n
+	nc_flash_window
+	
+# Launch glava
+super + shift + g
+	bash ~/bin/launch_glava	
+#
 # bspwm hotkeys
 #
 
@@ -94,7 +99,7 @@ alt + g
 #
 
 # set the window state
-alt + {e,shift + e,shift + space,f}
+alt + {e,shift + e,shift + space,shift + f}
 	bspc node -t {tiled,pseudo_tiled,\~floating,\~fullscreen}
 
 # set the node flags
@@ -152,8 +157,7 @@ alt + ctrl + {h,j,k,l}
 alt + ctrl + {1-9}
 	bspc node -o 0.{1-9}
 
-# cancel the preselection for the focused node
-alt + ctrl + space
+# cancel the preselection for the focused node alt + ctrl + space
 	bspc node -p cancel
 
 # cancel the preselection for the focused desktop

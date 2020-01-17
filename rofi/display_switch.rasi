@@ -37,6 +37,7 @@
     font: "Hack Nerd Font 11";
 }
 #window {
+    width:	      959;
     background-color: @background;
     border:           5;
     padding:          5;
@@ -110,7 +111,7 @@
     border-color: @separatorcolor;
 }
 #button {
-    spacing:    0;
+    spacing:    090;
     text-color: @normal-foreground;
 }
 #button.selected {

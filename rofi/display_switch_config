@@ -1,4 +1,3 @@
 rofi.theme: ~/.config/rofi/display_switch.rasi
 rofi.location: 0
 rofi.yoffset: 0
-rofi.lines: 4
