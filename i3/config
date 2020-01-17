@@ -30,13 +30,10 @@ exec --no-startup-id dunst
 
 # xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
 # screen before suspend. Use loginctl lock-session to lock your screen.
-exec_always --no-startup-id xss-lock --transfer-sleep-lock -- ~/.config/i3/i3lock-command.sh
+exec_always --no-startup-id xss-lock --transfer-sleep-lock -- ~/bin/i3lock-command.sh
 
 ###  Replaced nm-applet with networkmanager_dmenu + rofi-dmenu
 ###  Replaced blueman with blueberry
-
-# Start kdeconnect
-exec --no-startup-id /usr/lib/kdeconnectd
 
 # Gap and Workspace Settings
 
@@ -102,7 +99,7 @@ bindsym XF86AudioNext exec --no-startup-id playerctl next
 bindsym XF86AudioPrev exec --no-startup-id playerctl previous 
 
 # Launch Display Switcher
-bindsym mod4+p exec --no-startup-id ~/.config/i3/display_modes.sh
+bindsym mod4+p exec --no-startup-id ~/bin/display_modes.sh
 
 # Launch networkmanager_dmenu
 bindsym $mod+Shift+n exec --no-startup-id networkmanager_dmenu
@@ -116,7 +113,7 @@ bindsym Mod4+Print exec  --no-startup-id spectacle -b -a
 bindsym shift+Print exec  --no-startup-id spectacle -g		
 
 # Launch powermenu
-bindsym $mod+shift+e exec --no-startup-id ~/.config/rofi/powermenu.sh
+bindsym $mod+shift+e exec --no-startup-id ~/bin/powermenu.sh
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod

@@ -124,8 +124,8 @@ hc keybind XF86AudioPrev spawn playerctl previous
 # Other keybindings
 hc keybind $Mod-space spawn rofi -show drun -show-icons
 hc keybind $Mod-Shift-n spawn networkmanager_dmenu
-hc keybind $Mod-Shift-e spawn ~/.config/rofi/powermenu.sh
-hc keybind Mod4-p spawn ~/.config/i3/display_modes.sh
+hc keybind $Mod-Shift-e spawn ~/bin/powermenu.sh
+hc keybind Mod4-p spawn ~/bin/display_modes.sh
 
 # Lock Screen
 hc keybind Mod4-l spawn loginctl lock-session
@@ -202,7 +202,7 @@ hc spawn xset b off
 hc spawn setxkbmap -model pc101 -layout us -option caps:escape_shifted_capslock
 hc spawn nitrogen --restore &
 
-hc spawn xss-lock --transfer-sleep-lock -- ~/.config/i3/i3lock-command.sh &
+hc spawn xss-lock --transfer-sleep-lock -- ~/bin/i3lock-command.sh &
 
 hc spawn xfce4-power-manager
 
@@ -212,11 +212,3 @@ hc spawn /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
 hc spawn picom &
 hc spawn dunst &
 hc spawn polybar HLNU
-
-/usr/lib/kdeconnectd
-
-# Touchpad settings
-xinput set-prop "Elan Touchpad" "libinput Tapping Enabled" 1
-xinput set-prop "Elan Touchpad" "libinput Tapping Drag Enabled" 1
-xinput set-prop "Elan Touchpad" "libinput Natural Scrolling Enabled" 1
-xinput set-prop "Elan Touchpad" "libinput Disable While Typing Enabled" 1
