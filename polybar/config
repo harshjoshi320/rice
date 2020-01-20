@@ -34,9 +34,9 @@ module-margin = 2
 font-0 = Hack Nerd Font:size=10:antialias=false:style=Bold;2
 font-1 = Noto Sans CJK JP:pixelsize=10:style=Bold;1
 
-modules-left = mylabel info-hlwm-workspaces time date 
-modules-center = player-mpris-simple 
-modules-right = system-bluetooth-bluetoothctl battery pulseaudio-control wlan eth powermenu-alt 
+modules-left = date info-hlwm-workspaces mylabel player-mpris-tail
+modules-center = time  
+modules-right = system-bluetooth-bluetoothctl battery pulseaudio-control wlan powermenu-alt 
 
 separator = " "
 
@@ -64,8 +64,8 @@ cursor-scroll = ns-resize
 
 [bar/i3NU]
 width = 100%
-height = 40
-radius = 10.0
+height = 32
+radius = 15.0
 fixed-center = true
 
 background = ${colors.background}
@@ -74,7 +74,7 @@ foreground = ${colors.foreground}
 line-size = 0
 line-color = #00e58b
 
-border-top-size = 10
+border-top-size = 5
 border-left-size = 12
 border-right-size = 12
 border-bottom-size = 0
@@ -89,8 +89,8 @@ font-0 = Hack Nerd Font:size=10:antialias=false:style=Bold;2
 font-1 = Noto Sans CJK JP:pixelsize=10:style=Bold;1
 
 modules-left = time date mylabel i3 
-modules-center = player-mpris-simple 
-modules-right = battery pulseaudio-control system-bluetooth-bluetoothctl wlan eth powermenu-alt 
+modules-center = player-mpris-tail 
+modules-right = battery pulseaudio-control system-bluetooth-bluetoothctl wlan powermenu-alt 
 
 separator = " "
 
@@ -141,9 +141,9 @@ module-margin = 2
 font-0 = Hack Nerd Font:size=10:antialias=false:style=Bold;2
 font-1 = Noto Sans CJK JP:pixelsize=10:style=Bold;1
 
-modules-left = date bspwm mylabel player-mpris-tail  
+modules-left = date bspwm player-mpris-tail  
 modules-center = time  
-modules-right = battery pulseaudio-control system-bluetooth-bluetoothctl wlan eth powermenu-alt 
+modules-right = battery pulseaudio-control system-bluetooth-bluetoothctl wlan powermenu-alt 
 
 separator = " "
 
@@ -203,10 +203,8 @@ format-connected-prefix = " "
 format-connected-prefix-foreground = ${colors.foreground}
 label-connected = %local_ip%
 
-;format-disconnected = <label-disconnected>
-;format-disconnected-underline = ${self.format-connected-underline}
-;label-disconnected = %ifname% disconnected
-;label-disconnected-foreground = ${colors.foreground-alt}
+format-disconnected = 
+format-disconnected-underline = 
 
 [module/time]
 type = internal/date
@@ -237,7 +235,7 @@ format-padding = 0
 
 [module/player-mpris-tail]
 type = custom/script
-exec = ~/.config/polybar/scripts/player-mpris-tail.py -f '{icon} {:artist:t40:{artist} - {title}:}' -b {'vlc','cmus' --truncate-text "..." --icon-none '' --icon-playing '%{F#7FFF00}♪%{F-}' --icon-paused '' --icon-stopped ''
+exec = ~/.config/polybar/scripts/player-mpris-tail.py -f '{icon} {:artist:t40:{artist} - {title}:}' -b {'vlc','cmus' --truncate-text "..." --icon-playing '%{F#7FFF00}♪%{F-}' --icon-paused '' --icon-stopped ''
 label = %output%
 tail = true
 
@@ -366,7 +364,7 @@ exec = ~/.config/polybar/scripts/info-hlwm-workspaces.sh
 tail = true
 scroll-up = herbstclient use_index -1 --skip-visible &
 scroll-down = herbstclient use_index +1 --skip-visible &
-label-padding = 1
+label-padding = 0
 
 [module/i3]
 type = internal/i3

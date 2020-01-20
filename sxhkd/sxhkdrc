@@ -61,7 +61,7 @@ alt + shift + e
 
 # Screen Lock
 super + l
-	loginctl lock-session
+	xset s activate
 
 # flash focused window [ nc_flash_window ]
 alt + n
@@ -126,11 +126,14 @@ alt + {_,shift + }Tab
 alt + {_,shift + }t
 	bspc node -f {next.floating,prev.local}
 
-#
-# focus the next/previous desktop in the current monitor
-# super + bracket{left,right}
-# 	bspc desktop -f {prev,next}.local
 
+# focus the next/previous desktop in the current monitor
+ super + bracket{left,right}
+ 	bspc desktop -f {prev,next}.local
+
+# focus desktop in next/prev desktop
+super + {_,shift + }Tab
+	bspc monitor -f {next,prev}
 # focus the last node/desktop
 #super + {grave,Tab}
 #	bspc {node,desktop} -f last
