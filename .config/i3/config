@@ -1,3 +1,4 @@
+# i3 config file (v4)
 
 set $mod Mod1
 
@@ -26,21 +27,34 @@ exec --no-startup-id xfce4-power-manager
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 
 
 # Start compositor manager
-exec --no-startup-id picom
+exec_always --no-startup-id bash ~/bin/launch_picom
 
 # Launch Polybar
 exec_always --no-startup-id ~/.config/i3/launch.sh
 
 # Launch Flashfocus
-exec --no-startup-id flashfocus
+exec_always --no-startup-id pkill flashfocus;flashfocus
 
 # Gap and Workspace Settings
 
 gaps inner 10
 gaps outer 10
+gaps top 5
+
+workspace $ws1 output eDP1
+workspace $ws2 output eDP1
+workspace $ws3 output eDP1
+workspace $ws4 output eDP1
+workspace $ws5 output eDP1
+workspace $ws6 output eDP1
+workspace $ws7 output HDMI1
+workspace $ws8 output HDMI1
+workspace $ws9 output HDMI1
+workspace $ws10 output eDP1
 
 for_window [class="^.*"] border pixel 0
-for_window [class="^Spotify$"] move --no-auto-back-and-forth workspace $ws10
+#for_window [class="^Spotify$"] move --no-auto-back-and-forth workspace $ws10
+assign [class="^Spotify$"] $ws10
 for_window [class="^Gcolor3$"] floating enable
 for_window [class="^cmus$"] floating enable
 for_window [class="^Nitrogen$"] floating enable
@@ -209,6 +223,9 @@ bindsym XF86AudioPlay exec --no-startup-id playerctl play-pause
 bindsym XF86AudioNext exec --no-startup-id playerctl next  
 bindsym XF86AudioPrev exec --no-startup-id playerctl previous 
 
+# Flash focused window
+bindsym $mod+n exec --no-startup-id nc_flash_window
+
 ### Take screenshot using Spectacle
 # Capture current monitor, run in backgroud
 bindsym Print exec  --no-startup-id flameshot full -p ~/Pictures/Screenshots/ &
@@ -222,7 +239,7 @@ bindsym $mod+space exec --no-startup-id rofi -show drun -show-icons
 bindsym mod4+p exec --no-startup-id ~/bin/display_modes.sh
 
 # Launch networkmanager_dmenu
-bindsym $mod+Shift+n exec --no-startup-id networkmanager_dmenu
+bindsym $mod+shift+n exec --no-startup-id networkmanager_dmenu
 
 # Launch powermenu
 bindsym $mod+shift+e exec --no-startup-id ~/bin/powermenu.sh
@@ -230,3 +247,5 @@ bindsym $mod+shift+e exec --no-startup-id ~/bin/powermenu.sh
 # To Lock screen
 bindsym Mod4+l exec --no-startup-id xset s activate
 
+# Launch Glava
+bindsym $mod+shift+g exec --no-startup-id bash ~/bin/launch_glava

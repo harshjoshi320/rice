@@ -1,0 +1,5 @@
+#!/bin/bash
+
+pkill picom || true
+sleep 1
+picom

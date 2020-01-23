@@ -238,7 +238,7 @@ function output() {
     if [ "${isMuted}" = "yes" ]; then
         echo "${MUTED_COLOR}${MUTED_ICON}${curVol}%   ${sinkIcon}${activeSink}${endColor}"
     else
-        echo "${volIcon}${curVol}%   ${sinkIcon}${activeSink}"
+        echo "${volIcon}${curVol}% | ${sinkIcon}"
     fi
 }
 

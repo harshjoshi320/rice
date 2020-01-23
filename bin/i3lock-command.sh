@@ -1,9 +1,8 @@
 #!/bin/bash
 
 i3lock -e \
-	-m \
-	-n \
 	--force-clock \
+	--nofork \
 	--insidevercolor=31454777 \
 	--insidewrongcolor=31454777 \
 	--insidecolor=31454777 \
@@ -34,4 +33,5 @@ i3lock -e \
 	--noinputtext="  " \
 	--radius=120 \
 	--ring-width=10 \
-	--image="Pictures/Japan/Shinjuku-Tokyo_sunset.jpg"
+	--image="Pictures/Japan/tokyo_after_work.jpg" \
+	--pass-media-keys
