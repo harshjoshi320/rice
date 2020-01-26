@@ -1,6 +1,6 @@
 
 [colors]
-background = #232627
+background = #9f232627
 background-alt = #00e59b
 foreground = #c0c0c0
 foreground-alt = #5d5d6c
@@ -38,7 +38,7 @@ modules-left = date info-hlwm-workspaces mylabel player-mpris-tail
 modules-center = time  
 modules-right = system-bluetooth-bluetoothctl battery pulseaudio-control wlan powermenu-alt 
 
-separator = " "
+separator = "|"
 
 ;override-redirect = true
 
@@ -85,7 +85,7 @@ padding-right = 3
 
 module-margin = 2
 
-font-0 = Hack Nerd Font:size=10:antialias=false:style=Bold;2
+font-0 = Hack Nerd Font:size=10:antialias=true:style=Bold;2
 font-1 = Noto Sans CJK JP:pixelsize=10:style=Bold;1
 
 modules-left = time date mylabel i3 
@@ -170,7 +170,7 @@ cursor-scroll = ns-resize
 
 [module/wlan]
 type = internal/network
-interface = wlan0
+interface = wlp3s0
 interval = 3.0
 format-connected-padding = 0
 
