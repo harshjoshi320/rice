@@ -40,6 +40,7 @@ exec_always --no-startup-id pkill flashfocus;flashfocus
 gaps inner 10
 gaps outer 10
 gaps top 5
+#gaps top 45
 
 workspace $ws1 output eDP1
 workspace $ws2 output eDP1
