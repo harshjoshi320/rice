@@ -30,7 +30,7 @@ Cancel" | rofi -config ~/.config/rofi/powermenu_config -dmenu -p "Confirm $OP")
 	
 case "$CHOICE" in
 	" Lock Session")
-		~/.config/i3/i3lock-command.sh
+		xset s activate
 		;;
 	" Suspend Session")
 		systemctl suspend
