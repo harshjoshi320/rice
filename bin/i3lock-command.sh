@@ -2,7 +2,6 @@
 
 i3lock -e \
 	--force-clock \
-	--nofork \
 	--insidevercolor=31454777 \
 	--insidewrongcolor=31454777 \
 	--insidecolor=31454777 \
@@ -34,4 +33,5 @@ i3lock -e \
 	--radius=120 \
 	--ring-width=10 \
 	--image="Pictures/Japan/tokyo_after_work.jpg" \
-	--pass-media-keys
+	--pass-media-keys \
+	--nofork
