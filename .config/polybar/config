@@ -46,12 +46,12 @@ wm-name = "herbstluftwm"
 
 locale = en_US.UTF-8
 
-tray-position = center
-tray-padding-right = 2
-tray-reparent = true
-tray-background = ${colors.background}
-tray-detach = false
-tray-offset-x = 400
+;tray-position = center
+;tray-padding-right = 2
+;tray-reparent = true
+;tray-background = ${colors.background}
+;tray-detach = false
+;tray-offset-x = 400
 
 wm-restack = herbstluftwm
 
@@ -89,7 +89,7 @@ font-0 = Hack Nerd Font:size=10:antialias=true:style=Bold;2
 font-1 = Noto Sans CJK JP:pixelsize=10:style=Bold;1
 
 modules-left = time date mylabel i3 
-modules-center = player-mpris-tail 
+modules-center = player-mpris-tail
 modules-right = battery pulseaudio-control system-bluetooth-bluetoothctl wlan powermenu-alt 
 
 separator = " "
@@ -100,12 +100,12 @@ wm-name = "i3"
 
 locale = en_US.UTF-8
 
-tray-position = center
-tray-padding-right = 2
-tray-reparent = true
-tray-background = ${colors.background}
-tray-detach = false
-tray-offset-x = 480
+;tray-position = center
+;tray-padding-right = 2
+;tray-reparent = true
+;tray-background = ${colors.background}
+;tray-detach = false
+;tray-offset-x = 480
 
 wm-restack = i3
 
@@ -235,7 +235,7 @@ format-padding = 0
 
 [module/player-mpris-tail]
 type = custom/script
-exec = ~/.config/polybar/scripts/player-mpris-tail.py -f '{icon} {:artist:t40:{artist} - {title}:}' -b {'vlc','cmus' --truncate-text "..." --icon-playing '%{F#7FFF00}♪%{F-}' --icon-paused '' --icon-stopped ''
+exec = ~/.config/polybar/scripts/player-mpris-tail.py -f '{icon} {:artist:t40:{artist} : {title}:}' -b {'vlc','cmus' --truncate-text "..." --icon-playing '%{F#7FFF00}♪%{F-}' --icon-paused '' --icon-stopped ''
 label = %output%
 tail = true
 
