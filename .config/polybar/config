@@ -260,7 +260,7 @@ format-underline = #f7ff00
 format-padding = 0
 
 click-left = ~/.config/polybar/scripts/system-bluetooth-bluetoothctl.sh --toggle &
-click-right = blueberry
+click-right = blueman-manager
 
 [module/pulseaudio-control]
 type = custom/script
