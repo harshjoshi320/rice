@@ -31,7 +31,9 @@ while true; do
 	COMM+=" --crop_mode ${args[2]}"
 
 	if [[ "${args[2]}" == "normal" ]]; then
-		COMM+=" --crop_offset ${args[3]}"
+		if [[ "${args[3]}" != 0 ]]; then
+			COMM+=" --crop_offset ${args[3]}"
+		fi
 	fi
 
 	$COMM
