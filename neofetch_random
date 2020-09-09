@@ -1,0 +1,41 @@
+#!/bin/bash
+#########################################################
+######### Neofetch Random ###############
+#
+# Run neofetch with random images
+# Give filename as arguement to the script
+# File must have the following format
+#
+#<ImageSource><tab><size><tab><CropMode><tab><CropOffset>
+#
+#
+
+image_sources=$1
+
+while true; do
+
+	line="$(shuf -n 1 $image_sources)"
+
+	if [[ ${line:0:1} == '#' ]] || [[ -z $line ]]; then
+		continue
+	fi
+
+	
+	IFS="	" read -r -a args <<< $line
+
+	COMM="neofetch --source ${args[0]}"
+	if [[ "${args[1]}" != '0' ]]; then
+		COMM+=" --size ${args[1]}"
+	fi
+
+	COMM+=" --crop_mode ${args[2]}"
+
+	if [[ "${args[2]}" == "normal" ]]; then
+		COMM+=" --crop_offset ${args[3]}"
+	fi
+
+	$COMM
+
+	break
+
+done
