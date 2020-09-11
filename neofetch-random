@@ -8,6 +8,7 @@
 #
 #<ImageSource><tab><size><tab><CropMode><tab><CropOffset>
 #
+# Use a single tab to separate fields
 #
 
 image_sources=$1
