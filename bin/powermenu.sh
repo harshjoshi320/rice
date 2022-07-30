@@ -1,8 +1,8 @@
 #!/bin/bash
 
-CHOICE=$(echo " Lock Session
- Suspend Session
- Logout
+CHOICE=$(echo "🔒 Lock Session
+⏾ Suspend Session
+⍇ Logout
  Restart
  Shutdown" | rofi  \
 	-config ~/.config/rofi/powermenu_config  \
@@ -29,13 +29,13 @@ Cancel" | rofi -config ~/.config/rofi/powermenu_config -dmenu -p "Confirm $OP")
 }
 	
 case "$CHOICE" in
-	" Lock Session")
+	"🔒 Lock Session")
 		xset s activate
 		;;
-	" Suspend Session")
+	"⏾ Suspend Session")
 		systemctl suspend
 		;;
-	" Logout")
+	"⍇ Logout")
 		choice=confirm_choice $CHOICE
 		if [ "$(confirm_choice $CHOICE)" = "go" ]; then
 			case "$GDMSESSION" in
