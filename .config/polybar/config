@@ -14,7 +14,7 @@ height = 32
 radius = 10.0
 fixed-center = true
 
-background = ${colors.background}
+background = #af0a1413
 foreground = ${colors.foreground}
 
 line-size = 0
@@ -31,8 +31,8 @@ padding-right = 3
 
 module-margin = 2
 
-font-0 = Hack Nerd Font:size=10:antialias=false:style=Bold;2
-font-1 = Noto Sans CJK JP:pixelsize=10:style=Bold;1
+font-0 = Hack:size=10:antialias=true:style=Bold;2
+font-1 = Noto Sans CJK JP:pixelsize=12:style=Bold;1
 
 modules-left = date info-hlwm-workspaces mylabel player-mpris-tail
 modules-center = time  
@@ -269,12 +269,12 @@ label= %output%
 format-underline = #00ffff
 format-padding = 0
 
-exec = ~/.config/polybar/scripts/pulseaudio-control.sh --listen
+exec = ~/polybar-pulseaudio-control/pulseaudio-control.bash --icons-volume " , " --icon-muted " " --node-nicknames-from "device.description" listen
 click-right = exec pavucontrol &
-click-left = ~/.config/polybar/scripts/pulseaudio-control.sh --togmute
-click-middle = ~/.config/polybar/scripts/pulseaudio-control.sh --change
-scroll-up = ~/.config/polybar/scripts/pulseaudio-control.sh --up
-scroll-down = ~/.config/polybar/scripts/pulseaudio-control.sh --down
+click-left = ~/polybar-pulseaudio-control/pulseaudio-control.bash togmute
+click-middle = ~/polybar-pulseaudio-control/pulseaudio-control.bash change
+scroll-up = ~/polybar-pulseaudio-control/pulseaudio-control.bash up
+scroll-down = ~/polybar-pulseaudio-control/pulseaudio-control.bash down
 label-foreground = ${colors.foreground}
 
 [module/battery]
@@ -420,7 +420,7 @@ ws-icon-default = 
 [module/powermenu-alt]
 type = custom/text
 
-content = 
+content = ⏻
 content-foreground = ${colors.secondary}
 content-underline = #ff0004
 content-padding = 1

@@ -1,3 +1,5 @@
-rofi.theme: ~/.config/rofi/display_switch.rasi
-rofi.location: 0
-rofi.yoffset: 0
+configuration {
+location: 0;
+yoffset: 0;
+}
+@theme "display_switch.rasi"

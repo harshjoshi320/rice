@@ -7,6 +7,11 @@ font pango:Noto Sans 11
 # Disable beep sound
 exec --no-startup-id xset b off
 
+# Input Configuration
+exec xinput set-prop "ELAN1301:00 04F3:3128 Touchpad" "libinput Tapping Enabled" 1
+exec xinput set-prop "ELAN1301:00 04F3:3128 Touchpad" "libinput Natural Scrolling Enabled" 1
+exec xinput set-prop "ELAN1301:00 04F3:3128 Touchpad" "libinput Middle Emulation Enabled" 1
+
 # Set Custom Keymap - Escape and Shifted Caps
 exec --no-startup-id setxkbmap -model pc101 -layout us -option caps:escape_shifted_capslock
 
@@ -29,11 +34,11 @@ exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 # Start compositor manager
 exec_always --no-startup-id bash ~/bin/launch_picom
 
+# Launch Flashfocus
+exec_always --no-startup-id flashfocus
+
 # Launch Polybar
 exec_always --no-startup-id ~/.config/i3/launch.sh
-
-# Launch Flashfocus
-exec_always --no-startup-id pkill flashfocus;flashfocus
 
 # Gap and Workspace Settings
 
@@ -55,7 +60,6 @@ workspace $ws10 output eDP1
 
 for_window [class="^.*"] border pixel 0
 #for_window [class="^Spotify$"] move --no-auto-back-and-forth workspace $ws10
-assign [class="^Spotify$"] $ws10
 for_window [class="^Gcolor3$"] floating enable
 for_window [class="^cmus$"] floating enable
 for_window [class="^Nitrogen$"] floating enable
@@ -248,5 +252,3 @@ bindsym $mod+shift+e exec --no-startup-id ~/bin/powermenu.sh
 # To Lock screen
 bindsym Mod4+l exec --no-startup-id xset s activate
 
-# Launch Glava
-bindsym $mod+shift+g exec --no-startup-id bash ~/bin/launch_glava

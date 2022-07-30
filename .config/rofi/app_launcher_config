@@ -1,14 +1,12 @@
-rofi.theme: ~/.config/rofi/NU.rasi
-
-rofi.yoffset: 0
-rofi.lines: 10
-rofi.location: 0
-
-rofi.sort: false
-rofi.columns: 2
-rofi.cycle: false
-rofi.show-icons: true
-
-rofi.display-drun: apps
-rofi.modi: drun
-
+configuration {
+yoffset: 0;
+lines: 10;
+location: 0;
+sort: false;
+columns: 2;
+cycle: false;
+show-icons: true;
+display-drun: apps;
+modi: drun;
+}
+@theme "NU.rasi"
